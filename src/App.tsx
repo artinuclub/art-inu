@@ -1,30 +1,37 @@
 import "./index.css";
 import "./App.css";
-import { useEthers, useContractCall } from "@usedapp/core";
-import { Interface } from "ethers/lib/utils";
-import contract from "./contract";
+import { useEthers, useContractCall, useContractFunction } from "@usedapp/core";
+import { Interface, parseEther } from "ethers/lib/utils";
+import { Contract } from "ethers";
+import contract_abi from "./contract";
+import Card from "./Card";
 
 const STAKING_CONTRACT = "0x7d0D9783260b62dAFb2e6170e23AE9e35AE4edDA";
 const BUY_AMOUNT = 10;
 
 function App() {
   const { activateBrowserWallet, account, error, ...props } = useEthers();
-  const abi = new Interface(contract);
+  const abi = new Interface(contract_abi);
+  const contract = new Contract(STAKING_CONTRACT, abi);
+  const { state, send } = useContractFunction(contract, "buyTokens");
 
   const whitelist = useContractCall({
     abi,
     address: STAKING_CONTRACT,
     method: "whitelist",
+    // method: "whitelistedAddress",
     args: [account],
   });
-  // const buyTokens = useContractCall({
-  //   abi,
-  //   address: STAKING_CONTRACT,
-  //   method: "buyTokens",
-  //   args: [],
-  // });
 
-  // console.log("buyTokens", buyTokens);
+  const buy = () => {
+    const etherAmount = "0.1";
+    const value = parseEther(etherAmount);
+    console.log("value", value);
+
+    send(value._hex);
+  };
+
+  console.log("state", state);
 
   return (
     <div className="bg-green-100 min-h-screen">
@@ -35,42 +42,13 @@ function App() {
           </p>
         )}
         <div className="bg-white w-96 rounded-lg border-solid text-center py-8 px-8">
-          {!whitelist ? (
-            <>
-              <h1 className="text-xl mb-2">Welcome to the presale</h1>
-              <p className="text-gray-500">
-                Only whitelisted address will be able to join, make sure you’re
-                connected on the right account
-              </p>
-              <div className="mt-6">
-                <button
-                  className="bg-black rounded-3xl text-white active:bg-pink-600 font-bold uppercase text-sm px-8 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 "
-                  onClick={() => {
-                    activateBrowserWallet();
-                  }}
-                >
-                  Unlock wallet
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <h1 className="text-xl mb-2">Congratulations!</h1>
-              <p className="text-gray-500">
-                You're whitelisted, you can buy $INU
-              </p>
-              <div className="mt-6">
-                <button
-                  className="bg-black rounded-3xl text-white active:bg-pink-600 font-bold uppercase text-sm px-8 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 "
-                  onClick={() => {
-                    activateBrowserWallet();
-                  }}
-                >
-                  Buy
-                </button>
-              </div>
-            </>
-          )}
+          {/* @ts-ignore */}
+          <Card
+            account={account}
+            activateBrowserWallet={activateBrowserWallet}
+            whitelist={whitelist}
+            buy={buy}
+          />
         </div>
       </div>
     </div>
