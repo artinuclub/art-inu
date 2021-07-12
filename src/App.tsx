@@ -6,7 +6,7 @@ import { Contract } from "ethers";
 import contract_abi from "./contract";
 import Card from "./Card";
 
-const STAKING_CONTRACT = "0xB197F3691B629c8D502eA6fb3B17145650659162";
+const STAKING_CONTRACT = "0xfc1022995e5643bfc6669947f69151911fb5aec3";
 
 function App() {
   const { activateBrowserWallet, account, error } = useEthers();

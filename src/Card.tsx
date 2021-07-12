@@ -16,6 +16,7 @@ interface Props {
 
 const MIN_VALUE = "0.07";
 const MAX_VALUE = "0.14";
+const MAX_TOKEN = "0.00116666662"
 
 const Card: React.FC<Props> = ({
   account,
@@ -27,7 +28,8 @@ const Card: React.FC<Props> = ({
 }) => {
   const size = useWindowSize();
 
-  if (MAX_VALUE !== whitelistedAmount || status === "Success") {
+  if (MAX_TOKEN !== whitelistedAmount || status === "Success") {
+    console.log(whitelistedAmount)
     return (
       <>
         <h1 className="text-xl mb-2">Congratulations!</h1>
