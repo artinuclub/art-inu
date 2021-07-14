@@ -37,21 +37,22 @@ const Card: React.FC<Props> = ({
 }) => {
   const size = useWindowSize();
 
-  // if (MAX_TOKEN !== whitelistedAmount || status === "Success") {
-  //   console.log(whitelistedAmount)
-  //   return (
-  //     <>
-  //       <h1 className="text-xl mb-2">Congratulations!</h1>
-  //       <p className="text-gray-500">You're part of the Artinu family</p>
-  //       <Confetti
-  //         width={size.width}
-  //         height={size.height}
-  //         tweenDuration={200}
-  //         numberOfPieces={100}
-  //       />
-  //     </>
-  //   );
-  // }
+  if (MAX_TOKEN !== whitelistedAmount || status === "Success") {
+    console.log(whitelistedAmount)
+    return (
+      <>
+        <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
+        <h1 className="text-xl mb-2">Congratulations!</h1>
+        <p className="text-gray-500">You're part of the Artinu family</p>
+        <Confetti
+          width={size.width}
+          height={size.height}
+          tweenDuration={200}
+          numberOfPieces={100}
+        />
+      </>
+    );
+  }
 
   if (!account) {
     return (

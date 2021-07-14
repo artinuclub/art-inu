@@ -16,6 +16,7 @@ function App() {
   const { state, send } = useContractFunction(contract, "buyTokens");
   const etherBalance = useEtherBalance(STAKING_CONTRACT);
 
+
   const whitelist = useContractCall({
     abi,
     address: STAKING_CONTRACT,
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <div className="bg-artinuMain bg-gradient-to-b from-artinuPink to-transparent min-h-screen">
-      <Header />
+      <Header account={account} />
       <div className="clear-both pt-32 flex justify-center flex-col items-center">
         {error && (
           <p className="text-red-500 w-96 text-center font-bold mb-2">
