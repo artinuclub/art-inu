@@ -42,7 +42,7 @@ const Card: React.FC<Props> = ({
     return (
       <>
         <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
-        <h1 className="text-xl mb-2">Congratulations!</h1>
+        <h1 className="text-xl mb-2 font-semibold">Congratulations!</h1>
         <p className="text-gray-500">You're part of the Artinu family</p>
         <Confetti
           width={size.width}
@@ -60,7 +60,7 @@ const Card: React.FC<Props> = ({
         <div className="">
            <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
         </div>
-        <h1 className="text-xl mb-2">Welcome to the presale</h1>
+        <h1 className="text-xl mb-2 font-semibold">Welcome to the presale</h1>
         <p className="text-gray-500">
           Only whitelisted address will be able to join, make sure you’re
           connected on the right account
@@ -86,7 +86,7 @@ const Card: React.FC<Props> = ({
     return (
       
       <>
-        <h1 className="text-xl mb-2">Your address is not whitelisted</h1>
+        <h1 className="text-xl mb-2 font-semibold">Your address is not whitelisted</h1>
         <p className="text-gray-500">
           Only whitelisted address can participate in the presale
         </p>
@@ -118,9 +118,9 @@ const AmountRaised = ({etherBalance} : {etherBalance:any}) => {
   return(
     <div className="mb-12">
       <div className="bg-gray-100 mb-2">
-      <div className="h-1 bg-black rounded-full bg-pink-400" style={{width:(fullNumb*50) + "px"}}></div>
+      <div className="h-1 bg-black rounded-full bg-pink-400" style={{width:(fullNumb*100)/50 + "%"}}></div>
       </div>
-      <p className="float-left">{etherBalance && formatEther(etherBalance)} </p>
+      <p className="float-left">{etherBalance && formatEther(etherBalance)} ETH</p>
       <p className="float-right">50 ETH</p>
       <div className="bg-gray-100 h-px mt-12"></div>
     </div>
@@ -163,8 +163,8 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
   return (
     <>
       <AmountRaised etherBalance={etherBalance} />
-      <h1 className="text-xl mb-2">Participate in the presale</h1>
-      <p className="text-gray-500 mb-2">How much do you want to buy?</p>
+      <h1 className="text-xl mb-2 font-semibold">How much do you want to buy?</h1>
+      <p className="text-gray-500 mb-6">Min. 0.05 / Max. 0.20 ETH</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <Controller
@@ -180,7 +180,8 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
                   min={MIN_VALUE}
                   max={MAX_VALUE}
                   step="0.001"
-                  onChange={onChangeHandler}
+                  placeholder="0.00"
+                  //onChange={onChangeHandler}
                 />
               );
             }}
