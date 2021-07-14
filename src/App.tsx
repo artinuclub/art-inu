@@ -1,6 +1,6 @@
 import "./index.css";
 import "./App.css";
-import { useEthers, useContractCall, useContractFunction } from "@usedapp/core";
+import { useEthers, useContractCall, useContractFunction,useEtherBalance } from "@usedapp/core";
 import { Interface, parseEther, formatEther } from "ethers/lib/utils";
 import { Contract } from "ethers";
 import contract_abi from "./contract";
@@ -13,6 +13,7 @@ function App() {
   const abi = new Interface(contract_abi);
   const contract = new Contract(STAKING_CONTRACT, abi);
   const { state, send } = useContractFunction(contract, "buyTokens");
+  const etherBalance = useEtherBalance(STAKING_CONTRACT);
 
   const whitelist = useContractCall({
     abi,
@@ -35,16 +36,18 @@ function App() {
   };
 
   return (
-    <div className="bg-green-100 min-h-screen">
+    <div className="bg-gray-50 min-h-screen">
+      
       <div className="pt-32 flex justify-center flex-col items-center">
         {error && (
           <p className="text-red-500 w-96 text-center font-bold mb-2">
             {String(error)}
           </p>
         )}
-        <div className="bg-white w-96 rounded-lg border-solid text-center py-8 px-8">
+        <div className="bg-white w-3/12 rounded-lg border border-gray-200  shadow-xl text-center py-12 px-12">
           <Card
             account={account}
+            etherBalance={etherBalance}
             activateBrowserWallet={activateBrowserWallet}
             whitelist={whitelist}
             buy={buy}
