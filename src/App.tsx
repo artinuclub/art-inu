@@ -5,6 +5,7 @@ import { Interface, parseEther, formatEther } from "ethers/lib/utils";
 import { Contract } from "ethers";
 import contract_abi from "./contract";
 import Card from "./Card";
+import Header from "./Header"
 
 const STAKING_CONTRACT = "0xfc1022995e5643bfc6669947f69151911fb5aec3";
 
@@ -36,15 +37,15 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      
-      <div className="pt-32 flex justify-center flex-col items-center">
+    <div className="bg-artinuMain bg-gradient-to-b from-artinuPink to-transparent min-h-screen">
+      <Header />
+      <div className="clear-both pt-32 flex justify-center flex-col items-center">
         {error && (
           <p className="text-red-500 w-96 text-center font-bold mb-2">
             {String(error)}
           </p>
         )}
-        <div className="bg-white w-3/12 rounded-lg border border-gray-200  shadow-xl text-center py-12 px-12">
+        <div className="m-8 bg-white w-full max-w-lg rounded-lg border border-gray-200  shadow-xl text-center py-12 px-12">
           <Card
             account={account}
             etherBalance={etherBalance}

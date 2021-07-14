@@ -57,7 +57,7 @@ const Card: React.FC<Props> = ({
     return (
       <>
         <div className="">
-           <img className="mb-8" src={artinuLogo} alt="Logo" />
+           <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
         </div>
         <h1 className="text-xl mb-2">Welcome to the presale</h1>
         <p className="text-gray-500">
@@ -138,11 +138,11 @@ const AmountRaised = ({etherBalance} : {etherBalance:any}) => {
 // @ts-ignore
 const SectionBuy = ({ buy, status,etherBalance }) => {
   const { control, handleSubmit, setValue, reset } = useForm();
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: any, event:any) => {
     if (!data) {
       return;
     }
-    
+    event.preventDefault()
     buy(data.amount);
     // reset(
     //   { amount: 0 },
