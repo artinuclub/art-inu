@@ -37,13 +37,22 @@ const Card: React.FC<Props> = ({
 }) => {
   const size = useWindowSize();
 
-  if (account && MAX_TOKEN !== whitelistedAmount || status === "Success") {
+  if (account && whitelist && whitelist[0] === true &&  MAX_TOKEN !== whitelistedAmount || status === "Success") {
     console.log(whitelistedAmount)
     return (
       <>
         <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
         <h1 className="text-xl mb-2 font-semibold">Congratulations!</h1>
         <p className="text-gray-500">You're part of the Artinu family</p>
+        <div className="bg-gray-100 h-px mt-12"></div>
+        <p className="mt-8 font-semibold">Add ARTINU to Metamask</p>
+        <p className="text-gray-500 mb-4 mt-2">0xfc1022995e5643bfc6669947f69151911fb5aec3
+        </p>
+        <Button 
+          onClick={() =>  navigator.clipboard.writeText('0xfc1022995e5643bfc6669947f69151911fb5aec3')}
+          >
+          Copy to clipboard
+        </Button>
         <Confetti
           width={size.width}
           height={size.height}
@@ -169,7 +178,7 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
               return (
                 <Input
                   {...field}
-                  onChange={event => setInputValue(event.target.value)}
+                  //onChange={event => setInputValue(event.target.value)}
                   type="number"
                   hasMax
                   min={MIN_VALUE}

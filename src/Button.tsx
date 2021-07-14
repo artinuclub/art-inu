@@ -12,7 +12,7 @@ const Button: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className="bg-black rounded-3xl text-white active:bg-pink-600 font-bold uppercase text-base px-8 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 "
+      className="bg-black hover:bg-gray-800 rounded-3xl text-white active:bg-pink-600 font-bold uppercase text-base px-8 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 "
       onClick={onClick}
       {...props}
     >
