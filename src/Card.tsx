@@ -37,7 +37,7 @@ const Card: React.FC<Props> = ({
 }) => {
   const size = useWindowSize();
 
-  if (MAX_TOKEN !== whitelistedAmount || status === "Success") {
+  if (account && MAX_TOKEN !== whitelistedAmount || status === "Success") {
     console.log(whitelistedAmount)
     return (
       <>
@@ -139,11 +139,10 @@ const AmountRaised = ({etherBalance} : {etherBalance:any}) => {
 // @ts-ignore
 const SectionBuy = ({ buy, status,etherBalance }) => {
   const { control, handleSubmit, setValue, reset } = useForm();
-  const onSubmit = (data: any, event:any) => {
+  const onSubmit = (data: any) => {
     if (!data) {
       return;
     }
-    event.preventDefault()
     buy(data.amount);
     // reset(
     //   { amount: 0 },
@@ -154,12 +153,7 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
   };
 
   const [inputValue, setInputValue] = React.useState("0");
-
-  const onChangeHandler = (event:any) => {
-    setInputValue(event.target.value);
-  };
-
-
+ 
   return (
     <>
       <AmountRaised etherBalance={etherBalance} />
@@ -175,13 +169,13 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
               return (
                 <Input
                   {...field}
+                  onChange={event => setInputValue(event.target.value)}
                   type="number"
                   hasMax
                   min={MIN_VALUE}
                   max={MAX_VALUE}
                   step="0.001"
                   placeholder="0.00"
-                  //onChange={onChangeHandler}
                 />
               );
             }}
