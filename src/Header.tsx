@@ -12,7 +12,7 @@ function Header (props:any){
     return(
     <div className="max-w-screen-lg mx-auto pt-12 ">
     <header className="">
-        <img className="mb-8 float-left" src={artinuLogoHeader} alt="Logo" />
+        <a href="www.artinu.club" target="_blank"><img className="mb-8 float-left" src={artinuLogoHeader} alt="Logo" /></a>
         <div>
         {etherUserBalance &&
         <div className="float-right truncate w-48 bg-white p-2 rounded-full ml-2 px-4 border border-gray-200  shadow-sm">
