@@ -241,7 +241,7 @@ const SectionBuy = ({ buy, status, etherBalance }) => {
             }}
           />
           <div className="text-sm mt-4 text-gray-500">
-            You will receive ≈ {amountValue ? Number(amountValue) * 8333333 : 0}{" "}
+            You will receive ≈ {amountValue ? Number(amountValue) * 7000000 : 0}{" "}
             tokens
           </div>
           <div className="mt-4">
