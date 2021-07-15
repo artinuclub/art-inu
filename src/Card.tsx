@@ -7,6 +7,7 @@ import Button from "./Button";
 import Confetti from "react-confetti";
 import useWindowSize from "./useWindowSize";
 import artinuLogo from "./images/logo.svg"
+import Countdown from 'react-countdown';
 
 
 
@@ -20,9 +21,11 @@ interface Props {
   whitelistedAmount: any;
 }
 
-const MIN_VALUE = "0.07";
-const MAX_VALUE = "0.14";
-const MAX_TOKEN = "0.00116666662"
+const MIN_VALUE = "0.08";
+const MAX_VALUE = "0.4";
+const MAX_TOKEN = "0.0028"
+
+
 
 
 
@@ -36,6 +39,33 @@ const Card: React.FC<Props> = ({
   whitelistedAmount,
 }) => {
   const size = useWindowSize();
+
+  const fullNumb = Number(etherBalance && formatEther(etherBalance))
+  
+  if(etherBalance && fullNumb >=50){
+    return (
+      
+      <>
+        <h1 className="text-xl mb-2 font-semibold">The presale is over!</h1>
+        <p className="text-gray-500">
+          The presale is now over, join our Telegram if you have any question!
+        </p>
+        <div className="mt-6">
+          <Button
+            className="bg-black rounded-3xl text-white active:bg-pink-600 font-bold uppercase text-sm px-8 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 "
+            onClick={() => {
+              const url = "https://t.me/artinu_club";
+
+              const win = window.open(url, "_blank");
+              win?.focus();
+            }}
+          >
+            Open Telegram
+          </Button>
+        </div>
+      </>
+    );
+  }
 
   if (account && whitelist && whitelist[0] === true &&  MAX_TOKEN !== whitelistedAmount || status === "Success") {
     console.log(whitelistedAmount)
@@ -68,14 +98,18 @@ const Card: React.FC<Props> = ({
         <div className="">
            <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
         </div>
-        <h1 className="text-xl mb-2 font-semibold">Welcome to the presale</h1>
-        <p className="text-gray-500">
-          Only whitelisted address will be able to join, make sure you’re
+        <h1 className="text-xl mb-2 font-semibold">Welcome to the Art Inu presale</h1>
+        <p className="text-gray-500 mb-8">
+          Only whitelisted addresses will be able to join, make sure you’re
           connected on the right account
         </p>
+        <Countdown className="bg-gray-100 px-4 py-2 rounded-full"
+          date='2021-07-16T01:02:03' 
+          zeroPadTime={2}
+        />
         <div className="bg-gray-100 h-px mt-12"></div>
         <p className="mt-8 font-semibold">Important</p>
-        <p className="text-gray-500 mb-4 mt-2">- Listing will happen 24 hours after the presale <br/>- Token will instantly be sent to your wallet<br/>- Only whitelisted address will be able to buy</p>
+        <p className="text-gray-500 mb-4 mt-2">- Listing will happen between 24 and 48 hours after the presale ends to hype the launch<br/>- Tokens will instantly be sent to your wallet</p>
         <div className="mt-6">
           <Button
             onClick={() => {
@@ -99,7 +133,7 @@ const Card: React.FC<Props> = ({
       <>
         <h1 className="text-xl mb-2 font-semibold">Your address is not whitelisted</h1>
         <p className="text-gray-500">
-          Only whitelisted address can participate in the presale
+          Only whitelisted addresses can participate in the presale
         </p>
         <div className="mt-6">
           <Button
@@ -169,7 +203,7 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
     <>
       <AmountRaised etherBalance={etherBalance} />
       <h1 className="text-xl mb-2 font-semibold">How much do you want to buy?</h1>
-      <p className="text-gray-500 mb-6">Min. 0.05 / Max. 0.20 ETH</p>
+      <p className="text-gray-500 mb-6">Min. 0.08 / Max. 0.40 ETH</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <Controller
