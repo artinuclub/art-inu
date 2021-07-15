@@ -51,7 +51,7 @@ function App() {
           </p>
         )}
         <div className="mx-2">
-        <div className="bg-white p-4 w-full max-w-lg rounded-lg border border-gray-200  shadow-xl text-center py-12">
+        <div className="bg-white p-8 w-full max-w-lg rounded-lg border border-gray-200  shadow-xl text-center py-12">
           <Card
             isLoading={!active}
             account={account}
