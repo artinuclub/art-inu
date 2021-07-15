@@ -44,10 +44,11 @@ function App() {
   return (
     <div className="bg-artinuMain bg-gradient-to-b from-artinuPink to-transparent min-h-screen">
       <Header account={account} />
-      <div className="clear-both pt-32 flex justify-center flex-col items-center">
+      <div className="clear-both pt-16 flex justify-center flex-col items-center">
+        {console.log(error)}
         {error && (
           <p className="text-red-500 w-96 text-center font-bold mb-2">
-            {String(error)}
+            You need to be connected to Ethereum on Metamask
           </p>
         )}
         <div className="m-8 bg-white w-full max-w-lg rounded-lg border border-gray-200  shadow-xl text-center py-12 px-12">

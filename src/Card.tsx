@@ -91,6 +91,9 @@ const Card: React.FC<Props> = ({
           Only whitelisted address will be able to join, make sure you’re
           connected on the right account
         </p>
+        <div className="bg-gray-100 h-px mt-12"></div>
+        <p className="mt-8 font-semibold">Important</p>
+        <p className="text-gray-500 mb-4 mt-2">- Listing will happen 24 hours after the presale <br/>- Token will instantly be sent to your wallet<br/>- Only whitelisted address will be able to buy</p>
         <div className="mt-6">
           <Button
             onClick={() => {
