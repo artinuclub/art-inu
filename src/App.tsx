@@ -15,8 +15,7 @@ import Header from "./Header";
 const STAKING_CONTRACT = "0xfc1022995e5643bfc6669947f69151911fb5aec3";
 
 function App() {
-  const { activateBrowserWallet, account, active, error, ...props } =
-    useEthers();
+  const { activateBrowserWallet, account, active, error } = useEthers();
   const abi = new Interface(contract_abi);
   const contract = new Contract(STAKING_CONTRACT, abi);
   const { state, send } = useContractFunction(contract, "buyTokens");

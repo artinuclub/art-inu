@@ -40,9 +40,9 @@ const Card: React.FC<Props> = ({
 }) => {
   const size = useWindowSize();
 
-  if (isLoading) {
-    return <p>loading...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>loading...</p>;
+  // }
 
   if (
     (account &&
