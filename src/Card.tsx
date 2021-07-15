@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { useEthers, useContractCall, useContractFunction,useEtherBalance } from "@usedapp/core";
+import React, { useState } from "react";
+import {
+  useEthers,
+  useContractCall,
+  useContractFunction,
+  useEtherBalance,
+} from "@usedapp/core";
 import { Interface, parseEther, formatEther } from "ethers/lib/utils";
 import { useForm, Controller } from "react-hook-form";
 import Input from "./Input";
 import Button from "./Button";
 import Confetti from "react-confetti";
 import useWindowSize from "./useWindowSize";
-import artinuLogo from "./images/logo.svg"
-
-
+import artinuLogo from "./images/logo.svg";
 
 interface Props {
+  isLoading: boolean;
   account: any;
   activateBrowserWallet: any;
   whitelist: any;
@@ -22,11 +26,10 @@ interface Props {
 
 const MIN_VALUE = "0.07";
 const MAX_VALUE = "0.14";
-const MAX_TOKEN = "0.00116666662"
-
-
+const MAX_TOKEN = "0.00116666662";
 
 const Card: React.FC<Props> = ({
+  isLoading,
   account,
   activateBrowserWallet,
   whitelist,
@@ -37,8 +40,17 @@ const Card: React.FC<Props> = ({
 }) => {
   const size = useWindowSize();
 
-  if (account && whitelist && whitelist[0] === true &&  MAX_TOKEN !== whitelistedAmount || status === "Success") {
-    console.log(whitelistedAmount)
+  if (isLoading) {
+    return <p>loading...</p>;
+  }
+
+  if (
+    (account &&
+      whitelist &&
+      whitelist[0] === true &&
+      MAX_TOKEN !== whitelistedAmount) ||
+    status === "Success"
+  ) {
     return (
       <>
         <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
@@ -46,11 +58,16 @@ const Card: React.FC<Props> = ({
         <p className="text-gray-500">You're part of the Artinu family</p>
         <div className="bg-gray-100 h-px mt-12"></div>
         <p className="mt-8 font-semibold">Add ARTINU to Metamask</p>
-        <p className="text-gray-500 mb-4 mt-2">0xfc1022995e5643bfc6669947f69151911fb5aec3
+        <p className="text-gray-500 mb-4 mt-2">
+          0xfc1022995e5643bfc6669947f69151911fb5aec3
         </p>
-        <Button 
-          onClick={() =>  navigator.clipboard.writeText('0xfc1022995e5643bfc6669947f69151911fb5aec3')}
-          >
+        <Button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              "0xfc1022995e5643bfc6669947f69151911fb5aec3"
+            )
+          }
+        >
           Copy to clipboard
         </Button>
         <Confetti
@@ -67,7 +84,7 @@ const Card: React.FC<Props> = ({
     return (
       <>
         <div className="">
-           <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
+          <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
         </div>
         <h1 className="text-xl mb-2 font-semibold">Welcome to the presale</h1>
         <p className="text-gray-500">
@@ -88,14 +105,15 @@ const Card: React.FC<Props> = ({
   }
 
   if (account && whitelist && whitelist[0] === true) {
-    return <SectionBuy buy={buy} status={status} etherBalance={etherBalance}/>;
+    return <SectionBuy buy={buy} status={status} etherBalance={etherBalance} />;
   }
 
   if (account && whitelist && !whitelist[0]) {
     return (
-      
       <>
-        <h1 className="text-xl mb-2 font-semibold">Your address is not whitelisted</h1>
+        <h1 className="text-xl mb-2 font-semibold">
+          Your address is not whitelisted
+        </h1>
         <p className="text-gray-500">
           Only whitelisted address can participate in the presale
         </p>
@@ -116,38 +134,42 @@ const Card: React.FC<Props> = ({
     );
   }
 
+  return <p>loading...</p>;
+};
+
+const AmountRaised = ({ etherBalance }: { etherBalance: any }) => {
+  const fullNumb = Number(etherBalance && formatEther(etherBalance));
+
+  if (!etherBalance) {
+    return <p>loading...</p>;
+  }
+
+  if (etherBalance) {
+    return (
+      <div className="mb-12">
+        <div className="bg-gray-100 mb-2">
+          <div
+            className="h-1 bg-black rounded-full bg-pink-400"
+            style={{ width: (fullNumb * 100) / 50 + "%" }}
+          ></div>
+        </div>
+        <p className="float-left">
+          {etherBalance && formatEther(etherBalance)} ETH
+        </p>
+        <p className="float-right">50 ETH</p>
+        <div className="bg-gray-100 h-px mt-12"></div>
+      </div>
+    );
+  }
+
   return null;
 };
 
-
-const AmountRaised = ({etherBalance} : {etherBalance:any}) => {
-  const fullNumb = Number(etherBalance && formatEther(etherBalance))
-  console.log(fullNumb)
-  if(etherBalance){
-  return(
-    <div className="mb-12">
-      <div className="bg-gray-100 mb-2">
-      <div className="h-1 bg-black rounded-full bg-pink-400" style={{width:(fullNumb*100)/50 + "%"}}></div>
-      </div>
-      <p className="float-left">{etherBalance && formatEther(etherBalance)} ETH</p>
-      <p className="float-right">50 ETH</p>
-      <div className="bg-gray-100 h-px mt-12"></div>
-    </div>
-    
-  )
-  }else{
-    return(
-      <>
-      <p>loading</p>
-      </>
-    )
-  }
-}
-
-
 // @ts-ignore
-const SectionBuy = ({ buy, status,etherBalance }) => {
-  const { control, handleSubmit, setValue, reset } = useForm();
+const SectionBuy = ({ buy, status, etherBalance }) => {
+  const { control, handleSubmit, reset, watch } = useForm();
+  const amountValue = watch("amount");
+
   const onSubmit = (data: any) => {
     if (!data) {
       return;
@@ -161,12 +183,12 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
     // );
   };
 
-  const [inputValue, setInputValue] = React.useState("0");
- 
   return (
     <>
       <AmountRaised etherBalance={etherBalance} />
-      <h1 className="text-xl mb-2 font-semibold">How much do you want to buy?</h1>
+      <h1 className="text-xl mb-2 font-semibold">
+        How much do you want to buy?
+      </h1>
       <p className="text-gray-500 mb-6">Min. 0.05 / Max. 0.20 ETH</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
@@ -178,7 +200,6 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
               return (
                 <Input
                   {...field}
-                  //onChange={event => setInputValue(event.target.value)}
                   type="number"
                   hasMax
                   min={MIN_VALUE}
@@ -189,7 +210,10 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
               );
             }}
           />
-          <div className="text-sm mt-4 text-gray-500">You will receive ≈ {Number(inputValue)*8333333} tokens</div>
+          <div className="text-sm mt-4 text-gray-500">
+            You will receive ≈ {amountValue ? Number(amountValue) * 8333333 : 0}{" "}
+            tokens
+          </div>
           <div className="mt-4">
             <Button type="submit" isLoading={status === "Mining"}>
               Buy tokens
@@ -200,8 +224,5 @@ const SectionBuy = ({ buy, status,etherBalance }) => {
     </>
   );
 };
-
-
-
 
 export default Card;
