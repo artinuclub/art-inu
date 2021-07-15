@@ -58,9 +58,7 @@ const Card: React.FC<Props> = ({
         <p className="text-gray-500">You're part of the Artinu family</p>
         <div className="bg-gray-100 h-px mt-12"></div>
         <p className="mt-8 font-semibold">Add ARTINU to Metamask</p>
-        <p className="text-gray-500 mb-4 mt-2">
-          0xfc1022995e5643bfc6669947f69151911fb5aec3
-        </p>
+        <p className="text-gray-500 mb-4 mt-2 text-xs text-center">0xfc1022995e5643bfc6669947f69151911fb5aec3</p>
         <Button
           onClick={() =>
             navigator.clipboard.writeText(

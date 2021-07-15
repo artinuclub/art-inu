@@ -10,7 +10,7 @@ function Header (props:any){
     const etherUserBalance = useEtherBalance(props.account);
     
     return(
-    <div className="max-w-screen-lg mx-auto pt-12 ">
+    <div className="max-w-screen-lg mx-auto px-4 pt-12 ">
     <header className="">
         <img className="mb-8 float-left" src={artinuLogoHeader} alt="Logo" />
         <div>
