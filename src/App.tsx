@@ -12,7 +12,7 @@ import contract_abi from "./contract";
 import Card from "./Card";
 import Header from "./Header";
 
-const STAKING_CONTRACT = "0xfc1022995e5643bfc6669947f69151911fb5aec3";
+const STAKING_CONTRACT = "0xbcaa995c32d6c5ce39ad2d6ff5fc96bf1d488509";
 
 function App() {
   const { activateBrowserWallet, account, active, error } = useEthers();
@@ -27,6 +27,13 @@ function App() {
     method: "whitelistedAddress",
     args: [account],
   });
+
+  // const onlyWhitelist = useContractCall({
+  //   abi,
+  //   address: STAKING_CONTRACT,
+  //   method: "onlyWhitelisted",
+  //   args: [],
+  // });
 
   const whitelistedAmount = useContractCall({
     abi,
@@ -44,10 +51,10 @@ function App() {
   return (
     <div className="bg-artinuMain bg-gradient-to-b from-artinuPink to-transparent min-h-screen">
       <Header account={account} />
-      <div className="clear-both pt-24 max-w-lg mx-auto">
+      <div className="clear-both pt-16 max-w-lg mx-auto">
         {error && (
-          <p className="text-red-500 w-96 text-center font-bold mb-2">
-            You need to be connected on the Ethereum blockchain
+          <p className="text-red-500 text-center font-bold mb-2">
+            An error has occured. Please check that you are connected to the Ethereum network and try unlocking again.
           </p>
         )}
         <div className="mx-2">

@@ -21,7 +21,7 @@ function Header (props:any){
         }
         {etherUserBalance &&
         <div className="float-right bg-white p-2 rounded-full border border-gray-200 px-4 shadow-sm">
-            <p className="">{etherUserBalance && parseFloat(formatEther(etherUserBalance)).toFixed(2)} ETH</p>
+            <p className="font-semibold">{etherUserBalance && parseFloat(formatEther(etherUserBalance)).toFixed(2)} ETH</p>
         </div>
         }
         </div>
