@@ -262,7 +262,7 @@ const SectionBuy = ({ buy, status, etherBalance }) => {
       </form>
       <div className="bg-gray-100 h-px mt-8"></div>
         <p className="mt-8 font-semibold">Important</p>
-        <p className="text-gray-500 mb-4 mt-2">- Check <a className="font-semibold" href="www.artinu.club/presale" target="_blank">artinu.club/presale</a> to get more information about the distribution"<br/>- Tokens will instantly be sent to your wallet<br/>- If the softcap is not reach you will get a refund</p>
+        <p className="text-gray-500 mb-4 mt-2">- Check <a className="font-semibold" href="https://artinu.club/presale" target="_blank">artinu.club/presale</a> to get more information about the distribution"<br/>- Tokens will instantly be sent to your wallet<br/>- If the softcap is not reach you will get a refund</p>
     </>
   );
 };

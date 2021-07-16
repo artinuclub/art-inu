@@ -49,7 +49,7 @@ function App() {
   };
 
   return (
-    <div className="bg-artinuMain bg-gradient-to-b from-artinuPink to-transparent min-h-screen">
+    <div className="bg-hero-pattern bg-cover bg-opacity-60 min-h-screen">
       <Header account={account} />
       <div className="clear-both pt-16 max-w-lg mx-auto">
         {error && (
