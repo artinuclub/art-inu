@@ -83,11 +83,11 @@ const Card: React.FC<Props> = ({
         <p className="text-gray-500">You're part of the Artinu family</p>
         <div className="bg-gray-100 h-px mt-12"></div>
         <p className="mt-8 font-semibold">Add ARTINU to Metamask</p>
-        <p className="text-gray-500 mb-4 mt-2 text-xs text-center">0xfc1022995e5643bfc6669947f69151911fb5aec3</p>
+        <p className="text-gray-500 mb-4 mt-2 text-xs text-center">0x48Df9e374600b6966c5A290350Be4F9b119Dd084</p>
         <Button
           onClick={() =>
             navigator.clipboard.writeText(
-              "0xfc1022995e5643bfc6669947f69151911fb5aec3"
+              "0x48Df9e374600b6966c5A290350Be4F9b119Dd084"
             )
           }
         >
@@ -140,7 +140,7 @@ const Card: React.FC<Props> = ({
         </div>
         <div className="bg-gray-100 h-px mt-8"></div>
         <p className="mt-8 font-semibold">Important</p>
-        <p className="text-gray-500 mb-4 mt-2">- Listing will happen between 24 and 48 hours after the presale ends to hype the launch<br/>- Tokens will instantly be sent to your wallet<br/>- If the softcap is not reach you will get a refund</p>
+        <p className="text-gray-500 mb-4 mt-2">- Listing will happen between 24 and 48 hours after the presale ends to hype the launch<br/>- Tokens will instantly be sent to your wallet<br/>- If the softcap is not reached you will get a refund</p>
       </>
     );
   }
@@ -262,7 +262,7 @@ const SectionBuy = ({ buy, status, etherBalance }) => {
       </form>
       <div className="bg-gray-100 h-px mt-8"></div>
         <p className="mt-8 font-semibold">Important</p>
-        <p className="text-gray-500 mb-4 mt-2">- Check <a className="font-semibold" href="https://artinu.club/presale" target="_blank">artinu.club/presale</a> to get more information about the distribution"<br/>- Tokens will instantly be sent to your wallet<br/>- If the softcap is not reach you will get a refund</p>
+        <p className="text-gray-500 mb-4 mt-2">- Check <a className="font-semibold" href="https://artinu.club/presale" target="_blank">artinu.club/presale</a> to learn more  <br/>about the presale<br/>- Tokens will instantly be sent to your wallet<br/>- If the softcap is not reach you will get a refund</p>
     </>
   );
 };
