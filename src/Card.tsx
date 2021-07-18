@@ -34,7 +34,6 @@ const MAX_TOKEN = "0.0028"
 
 
 
-
 const Card: React.FC<Props> = ({
   isLoading,
   account,
@@ -48,6 +47,7 @@ const Card: React.FC<Props> = ({
   const size = useWindowSize();
 
   const fullNumb = Number(etherBalance && formatEther(etherBalance))
+ 
   
   if(etherBalance && fullNumb >=50){
     return (
@@ -75,7 +75,7 @@ const Card: React.FC<Props> = ({
   }
 
   if (account && whitelist && whitelist[0] === true &&  MAX_TOKEN !== whitelistedAmount || status === "Success") {
-    console.log(whitelistedAmount)
+
     return (
       <>
         <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
@@ -110,13 +110,12 @@ const Card: React.FC<Props> = ({
           <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
         </div>
         <Countdown className="bg-gray-100 px-4 py-2 rounded-full"
-          date='2021-07-18T12:00:00' 
+          date='2021-07-19T22:00:00' 
           zeroPadTime={2}
         />
         <h1 className="text-xl mb-2 font-semibold mt-8">Welcome to the Art Inu presale</h1>
         <p className="text-gray-500 mb-8">
-          Only whitelisted addresses will be able to join, make sure you’re
-          connected to the right account
+          The presale is now open to everyone
         </p>
         <div className="flex flex-wrap justify-center">
           <div className="mb-8 px-8">
@@ -146,7 +145,7 @@ const Card: React.FC<Props> = ({
   }
 
   if (account && whitelist && !whitelist[0]) {
-    return <SectionBuy buy={buy} status={status} etherBalance={etherBalance} />;
+    return <SectionBuy buy={buy} status={status} etherBalance={etherBalance}  />;
   }
 
   // if (account && whitelist && !whitelist[0]) {

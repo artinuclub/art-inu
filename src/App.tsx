@@ -13,11 +13,14 @@ import Card from "./Card";
 import Header from "./Header";
 
 const STAKING_CONTRACT = "0xbcaa995c32d6c5ce39ad2d6ff5fc96bf1d488509";
+const TOKEN_CONTRACT = "0x48Df9e374600b6966c5A290350Be4F9b119Dd084";
 
 function App() {
   const { activateBrowserWallet, account, active, error } = useEthers();
+
   const abi = new Interface(contract_abi);
   const contract = new Contract(STAKING_CONTRACT, abi);
+  
   const { state, send } = useContractFunction(contract, "buyTokens");
   const etherBalance = useEtherBalance(STAKING_CONTRACT);
 
@@ -27,6 +30,9 @@ function App() {
     method: "whitelistedAddress",
     args: [account],
   });
+
+
+
 
   // const onlyWhitelist = useContractCall({
   //   abi,
