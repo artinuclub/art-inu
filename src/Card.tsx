@@ -27,7 +27,7 @@ interface Props {
   whitelistedAmount: any;
 }
 
-const MIN_VALUE = "0.08";
+const MIN_VALUE = "0.04";
 const MAX_VALUE = "0.4";
 const MAX_TOKEN = "0.0028"
 
@@ -227,7 +227,7 @@ const SectionBuy = ({ buy, status, etherBalance }) => {
     <>
       <AmountRaised etherBalance={etherBalance} />
       <h1 className="text-xl mb-2 font-semibold">How much do you want to buy?</h1>
-      <p className="text-gray-500 mb-6">Min. 0.08 / Max. 0.40 ETH</p>
+      <p className="text-gray-500 mb-6">Min. 0.04 / Max. 0.40 ETH</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <Controller
