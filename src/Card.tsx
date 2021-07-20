@@ -109,10 +109,10 @@ const Card: React.FC<Props> = ({
         <div className="">
           <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
         </div>
-        <Countdown className="bg-gray-100 px-4 py-2 rounded-full"
+        {/* <Countdown className="bg-gray-100 px-4 py-2 rounded-full"
           date='2021-07-20T22:00:00' 
           zeroPadTime={2}
-        />
+        /> */}
         <h1 className="text-xl mb-2 font-semibold mt-8">Welcome to the Art Inu presale</h1>
         <p className="text-gray-500 mb-8">
           The presale is now open to everyone
