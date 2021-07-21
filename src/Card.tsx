@@ -25,11 +25,12 @@ interface Props {
   status?: string;
   etherBalance: any;
   whitelistedAmount: any;
+  balanceOf: any;
 }
 
 const MIN_VALUE = "0.04";
 const MAX_VALUE = "0.4";
-const MAX_TOKEN = "0.0028"
+const MAX_TOKEN = 2800000000000000
 
 
 
@@ -43,11 +44,14 @@ const Card: React.FC<Props> = ({
   status,
   etherBalance,
   whitelistedAmount,
+  balanceOf,
 }) => {
   const size = useWindowSize();
 
   const fullNumb = Number(etherBalance && formatEther(etherBalance))
+  const balanceNumber = Number(balanceOf)
  
+  console.log(balanceNumber)
   
   if(etherBalance && fullNumb >=50){
     return (
@@ -74,7 +78,7 @@ const Card: React.FC<Props> = ({
     );
   }
 
-  if (account && whitelist && whitelist[0] === true &&  MAX_TOKEN !== whitelistedAmount || status === "Success") {
+  if (status === "Success" || balanceNumber === MAX_TOKEN) {
 
     return (
       <>
@@ -145,7 +149,7 @@ const Card: React.FC<Props> = ({
   }
 
   if (account && whitelist && !whitelist[0]) {
-    return <SectionBuy buy={buy} status={status} etherBalance={etherBalance}  />;
+    return <SectionBuy buy={buy} status={status} etherBalance={etherBalance}/>;
   }
 
   // if (account && whitelist && !whitelist[0]) {

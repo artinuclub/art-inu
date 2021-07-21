@@ -31,6 +31,12 @@ function App() {
     args: [account],
   });
 
+  const balanceOf = useContractCall({
+    abi,
+    address: TOKEN_CONTRACT,
+    method: "balanceOf",
+    args: [account],
+  });
 
 
 
@@ -73,6 +79,7 @@ function App() {
             whitelist={whitelist}
             buy={buy}
             status={state?.status}
+            balanceOf={balanceOf}
             whitelistedAmount={
               whitelistedAmount && formatEther(whitelistedAmount[0]._hex)
             }
