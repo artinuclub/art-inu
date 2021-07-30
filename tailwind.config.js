@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        artinuMain:'#FAF7F1',
-        artinuPink:'#F8EDF0'
+        artinuMain:'#FF64AE',
+        artinuPink:'#F8EDF0',
       },
       backgroundImage: theme => ({
         'hero-pattern': "url('/src/images/hero-pattern.jpg')",

@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChainId, DAppProvider } from "@usedapp/core";
+import { ApolloProvider } from '@apollo/client'
+import { Client } from './App'
+
 
 const config = {
   readOnlyChainId: ChainId.Mainnet,
@@ -11,9 +14,11 @@ const config = {
 
 ReactDOM.render(
   <React.StrictMode>
+    <ApolloProvider client={Client}>
     <DAppProvider config={config}>
       <App />
     </DAppProvider>
+    </ApolloProvider>,
   </React.StrictMode>,
   document.getElementById("root")
 );
@@ -22,3 +27,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
