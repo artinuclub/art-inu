@@ -88,7 +88,7 @@ useEffect(() => {
     },
   })
 
-  const artinuPriceInEth = (parseFloat(artinuData && artinuData.tokens[0].derivedETH) * Number(advice)).toFixed(5)
+  const artinuPriceInEth = (parseFloat(artinuData && artinuData.tokens[0].derivedETH) * Number(advice)).toFixed(6)
   const artinuTotalLiquidity = artinuData && artinuData.tokens[0].tradeVolumeUSD  
 
 
