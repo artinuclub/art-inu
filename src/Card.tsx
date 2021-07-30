@@ -63,16 +63,16 @@ const Card: React.FC<Props> = ({
             (parseFloat(daiPriceInEth)) * 2300 }
       </div> */}
         <div className="flex flex-wrap justify-between lg:mx-8 mx-2">
-          <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl mb-2 font-semibold">${artinuPriceInEth}</h1>
+          <div className="lg:mb-0">
+            <h1 className="text-xl font-semibold">${artinuPriceInEth}</h1>
             <p className="text-gray-500">Current price</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl mb-2 font-semibold">{circulatingSupply.toLocaleString()}</h1>
+            <h1 className="text-xl font-semibold">{circulatingSupply.toLocaleString()}</h1>
             <p className="text-gray-500">Circulating supply</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl mb-2 font-semibold">${(circulatingSupply * artinuPriceInEth).toLocaleString()}</h1>
+            <h1 className="text-xl font-semibold">${(circulatingSupply * artinuPriceInEth).toLocaleString()}</h1>
             <p className="text-gray-500">Current mcap</p>
           </div>
           

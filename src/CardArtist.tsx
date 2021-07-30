@@ -45,8 +45,12 @@ const Card: React.FC<Props> = ({
         <h2 className="text-3xl">{etherValueRound} ARTINU</h2>
         <p className="text-gray-500">≈ ${Math.round(artinuPriceInEth * etherValue).toLocaleString() }</p>
         <div className="mt-4">
-        <Button>
-            Donate to the fund
+        <Button onClick={() =>
+            navigator.clipboard.writeText(
+              "0x853c64EdD278B9C30E8abf5F8cf42aeF64C3796D"
+            )
+          }>
+            Copy address to donate
           </Button>
         </div>
       </div>
