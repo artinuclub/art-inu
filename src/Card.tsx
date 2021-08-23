@@ -24,7 +24,7 @@ interface Props {
   balanceOf: any;
   artinuPriceInEth: any;
   artinuLoading: any;
-  artinuTotalLiquidity:any;
+  artinuTotalLiquidity: any;
 }
 
 const MIN_VALUE = "0.04";
@@ -45,11 +45,10 @@ const Card: React.FC<Props> = ({
   const size = useWindowSize();
 
   const etherValue =
-  balanceOf && Web3.utils.fromWei(balanceOf.toString(), "gwei");
+    balanceOf && Web3.utils.fromWei(balanceOf.toString(), "gwei");
   const etherValueRound = Math.round(Number(etherValue)).toLocaleString();
-  console.log(etherValueRound);
 
-  const circulatingSupply = 650000000
+  const circulatingSupply = 650000000;
 
   if (account && etherValueRound) {
     return (
@@ -64,18 +63,23 @@ const Card: React.FC<Props> = ({
       </div> */}
         <div className="flex flex-wrap justify-between lg:mx-8 mx-2">
           <div className="lg:mb-0">
-            <h1 className="text-xl text-white font-semibold">${artinuPriceInEth}</h1>
+            <h1 className="text-xl text-white font-semibold">
+              ${artinuPriceInEth}
+            </h1>
             <p className="text-gray-400">Current price</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl text-white font-semibold">{circulatingSupply.toLocaleString()}</h1>
+            <h1 className="text-xl text-white font-semibold">
+              {circulatingSupply.toLocaleString()}
+            </h1>
             <p className="text-gray-500">Circulating supply</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl text-white font-semibold">${(circulatingSupply * artinuPriceInEth).toLocaleString()}</h1>
+            <h1 className="text-xl text-white font-semibold">
+              ${(circulatingSupply * artinuPriceInEth).toLocaleString()}
+            </h1>
             <p className="text-gray-500">Current mcap</p>
           </div>
-          
         </div>
       </>
     );
@@ -87,20 +91,23 @@ const Card: React.FC<Props> = ({
     return (
       <>
         <div className="mx-auto text-center">
-        <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
-        <h2 className="text-xl text-white font-semibold">Welcome to Art Inu</h2>
-        <p className="text-gray-400 mb-8">Unlock your wallet to access the platform</p>
-        <div className="mt-2 mb-2 w-1/5 mx-auto">
-          <Button
-            onClick={() => {
-              activateBrowserWallet();
-            }}
-          >
-            Unlock wallet
-          </Button>
+          <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
+          <h2 className="text-xl text-white font-semibold">
+            Welcome to Art Inu
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Unlock your wallet to access the platform
+          </p>
+          <div className="mt-2 mb-2 w-1/5 mx-auto">
+            <Button
+              onClick={() => {
+                activateBrowserWallet();
+              }}
+            >
+              Unlock wallet
+            </Button>
+          </div>
         </div>
-        </div>
-       
       </>
     );
   }
