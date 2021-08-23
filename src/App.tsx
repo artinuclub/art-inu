@@ -12,6 +12,7 @@ import contract_abi from "./contract";
 import Card from "./Card";
 import CardArtist from "./CardArtist";
 import CardHolder from "./CardHolder";
+import Portfolio from "./Portfolio";
 import CardJoinArtist from "./CardJoinArtist";
 import CardDAO from "./CardDAO";
 import FormArtist from "./FormArtist";
@@ -119,9 +120,9 @@ useEffect(() => {
   const tabs = 1
 
   return (
-    <div className="bg-hero-pattern bg-cover bg-opacity-60 min-h-screen pb-12">
-      <Header account={account} />
-      <div className="clear-both pt-16 max-w-5xl mx-auto">
+    <div className="">
+      {/* <Header account={account} /> */}
+      <div className="clear-both pt-16 max-w-7xl mx-auto">
         {error && (
           <p className="text-red-500 text-center font-bold mb-2">
             An error has occured. Please check that you are connected to the
@@ -129,7 +130,7 @@ useEffect(() => {
           </p>
         )}
         <div className="mx-2">
-          <div className="bg-white p-8 w-full rounded-lg border border-gray-200  shadow-xl py-8">
+          <div className="bg-gray-800 p-8 w-full rounded-lg  shadow-xl py-8">
           {/* <div>
         Dai price:{' '}
         {daiLoading
@@ -150,27 +151,26 @@ useEffect(() => {
               artinuTotalLiquidity={artinuTotalLiquidity}
             />
           </div>
-
           
           {account &&
           <div className="flex flex-wrap">
             <div className="lg:w-6/12 w-full">
-              <div className="bg-white h-72 p-8 mt-4 lg:mr-2 m-0 rounded-lg border border-gray-200  shadow-xl py-12 ">
+              <div className="bg-gray-800 h-72 p-8 mt-4 lg:mr-2 m-0 rounded-lg  shadow-xl py-12 ">
                 <CardArtist balanceOf={balanceOf} artinuPriceInEth={artinuPriceInEth} /> 
               </div>
             </div>
             <div className="lg:w-6/12 w-full">
-              <div className="bg-white h-72 p-8 mt-4 lg:ml-2 m-0 rounded-lg border border-gray-200  shadow-xl py-12 ">
+              <div className="bg-gray-800 h-72 p-8 mt-4 lg:ml-2 m-0 rounded-lg shadow-xl py-12 ">
                 <CardHolder balanceOf={balanceOf} artinuPriceInEth={artinuPriceInEth} balanceArtinuFinal={balanceArtinuFinal}/>
               </div>
             </div>
             <div className="lg:w-6/12 w-full">
-              <div className="bg-white h-96 p-8 mt-4 lg:mr-2 m-0 rounded-lg border border-gray-200  shadow-xl py-12 ">
+              <div className="bg-gray-800 h-96 p-8 mt-4 lg:mr-2 m-0 rounded-lg shadow-xl py-12 ">
                 <CardJoinArtist balanceOf={balanceOf} />
               </div>
             </div>
             <div className="lg:w-6/12 w-full">
-              <div className="bg-white h-96 p-8 mt-4 lg:ml-2 m-0 rounded-lg shadow-xl py-12 relative">
+              <div className="bg-gray-800 h-96 p-8 mt-4 lg:ml-2 m-0 rounded-lg shadow-xl py-12 relative">
                 <CardDAO balanceOf={balanceOf} />
               </div>
             </div>

@@ -41,9 +41,9 @@ const Card: React.FC<Props> = ({
     <>
       <div className="">
         <span className="text-3xl">👩‍🎤</span>
-        <h1 className="text-base mb-2 font-semibold text-gray-500 mt-2">Artists wallet</h1>
-        <h2 className="text-3xl">{etherValueRound} ARTINU</h2>
-        <p className="text-gray-500">≈ ${Math.round(artinuPriceInEth * etherValue).toLocaleString() }</p>
+        <h1 className="text-base mb-2 font-semibold text-gray-400 mt-2">Artists wallet</h1>
+        <h2 className="text-3xl text-white">{etherValueRound} ARTINU</h2>
+        <p className="text-gray-400">≈ ${Math.round(artinuPriceInEth * etherValue).toLocaleString() }</p>
         <div className="mt-4">
         <Button onClick={() =>
             navigator.clipboard.writeText(

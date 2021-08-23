@@ -36,11 +36,11 @@ const CardDAO: React.FC<Props> = ({
   return (
     <div className="relative" >
       <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
-      <div className="bg-green-100 py-2 px-4 inline-block rounded-full mb-6 absolute top-0 left-0"><p className="text-green-500 text-sm font-semibold">1 active proposal</p></div>
+      <div className="py-2 px-4 inline-block rounded-full mb-6 absolute top-0 left-0"><p className="text-green-500 text-sm font-semibold">1 active proposal</p></div>
       <div className="">
         <p className="font-semibold text-sm text-artinuMain mb-1">ARTINU DAO</p>
-        <h2 className="text-xl font-semibold">Vote or submit a proposal</h2>
-        <p className="text-gray-500 mt-2">Use your ARTINU to participate in the decisions</p>
+        <h2 className="text-xl text-white font-semibold">Vote or submit a proposal</h2>
+        <p className="text-gray-400 mt-2">Use your ARTINU to participate in the decisions</p>
         <div className="mt-8">
         <a href="https://snapshot.org/#/artinu.eth" target="_blank"><Button>
             Vote on Snapshot

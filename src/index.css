@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a.active {
+    color: #FF64AE;
+    font-weight:600;
+  }
+
+  body{
+    background-color:black;
+  }

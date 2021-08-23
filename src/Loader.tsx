@@ -1,26 +1,5 @@
 import React, { ButtonHTMLAttributes } from "react";
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading?: boolean;
-}
-
-const Button: React.FC<Props> = ({
-  onClick,
-  isLoading,
-  children,
-  ...props
-}) => {
-  return (
-    <button
-      className="bg-artinuMain w-full rounded-3xl text-white active:bg-pink-600 font-bold uppercase text-base px-8 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 "
-      onClick={onClick}
-      {...props}
-    >
-      {isLoading ? <Loader /> : children}
-    </button>
-  );
-};
-
 const Loader = () => {
   return (
     <span className="flex justify-center">
@@ -49,4 +28,4 @@ const Loader = () => {
   );
 };
 
-export default Button;
+export default Loader;

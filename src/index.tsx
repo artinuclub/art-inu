@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import AppRouter from "./AppRouter";
 import reportWebVitals from "./reportWebVitals";
 import { ChainId, DAppProvider } from "@usedapp/core";
 import { ApolloProvider } from '@apollo/client'
@@ -16,7 +16,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={Client}>
     <DAppProvider config={config}>
-      <App />
+      <AppRouter />
     </DAppProvider>
     </ApolloProvider>,
   </React.StrictMode>,

@@ -64,15 +64,15 @@ const Card: React.FC<Props> = ({
       </div> */}
         <div className="flex flex-wrap justify-between lg:mx-8 mx-2">
           <div className="lg:mb-0">
-            <h1 className="text-xl font-semibold">${artinuPriceInEth}</h1>
-            <p className="text-gray-500">Current price</p>
+            <h1 className="text-xl text-white font-semibold">${artinuPriceInEth}</h1>
+            <p className="text-gray-400">Current price</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl font-semibold">{circulatingSupply.toLocaleString()}</h1>
+            <h1 className="text-xl text-white font-semibold">{circulatingSupply.toLocaleString()}</h1>
             <p className="text-gray-500">Circulating supply</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl font-semibold">${(circulatingSupply * artinuPriceInEth).toLocaleString()}</h1>
+            <h1 className="text-xl text-white font-semibold">${(circulatingSupply * artinuPriceInEth).toLocaleString()}</h1>
             <p className="text-gray-500">Current mcap</p>
           </div>
           
@@ -88,9 +88,9 @@ const Card: React.FC<Props> = ({
       <>
         <div className="mx-auto text-center">
         <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
-        <h2 className="text-xl font-semibold">Welcome to Art Inu</h2>
-        <p className="text-gray-500 mb-8">Unlock your wallet to access the platform</p>
-        <div className="mt-2 mb-2">
+        <h2 className="text-xl text-white font-semibold">Welcome to Art Inu</h2>
+        <p className="text-gray-400 mb-8">Unlock your wallet to access the platform</p>
+        <div className="mt-2 mb-2 w-1/5 mx-auto">
           <Button
             onClick={() => {
               activateBrowserWallet();

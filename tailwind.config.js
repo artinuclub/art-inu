@@ -6,6 +6,7 @@ module.exports = {
       colors:{
         artinuMain:'#FF64AE',
         artinuPink:'#F8EDF0',
+        artinuGreen:'#64FF99'
       },
       backgroundImage: theme => ({
         'hero-pattern': "url('/src/images/hero-pattern.jpg')",
