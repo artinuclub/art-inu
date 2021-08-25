@@ -9,10 +9,11 @@ export default function AppRouter() {
 
   return (
     <div className="bg-gray-900 h-full pb-12">
-      <BrowserRouter forceRefresh>
+      <BrowserRouter>
         <Header account={account} />
         <Switch>
           <Route
+            key="1"
             render={(props) => (
               <Portfolio
                 {...props}
@@ -24,6 +25,7 @@ export default function AppRouter() {
           />
           <Route component={App} path="/dashboard" />
           <Route
+            key="2"
             render={(props) => (
               <Portfolio {...props} selectedAccount={account} />
             )}

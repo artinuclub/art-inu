@@ -28,32 +28,11 @@ function Header(props: any) {
   return (
     <div className=" mx-auto px-4 pt-8 pb-8 mb-12  text-white border-b border-gray-800">
       <div className="max-w-7xl mx-auto">
-        <header className="">
-          <a href="https://www.artinu.club" target="_blank">
-            <img className="float-left" src={artinuLogoHeader} alt="Logo" />
-          </a>
-          <div>
-            {etherUserBalance && (
-              <div className="float-right truncate w-48 bg-gray-800 rounded-full ml-2 px-4  shadow-sm">
-                <p>{props.account}</p>
-              </div>
-            )}
-            {etherUserBalance && (
-              <div className="float-right bg-gray-800 rounded-full b px-4 shadow-sm hidden lg:block">
-                <p className="font-semibold">
-                  {etherUserBalance &&
-                    parseFloat(formatEther(etherUserBalance)).toFixed(2)}{" "}
-                  ETH
-                </p>
-              </div>
-            )}
-            {etherUserBalance && (
-              <div className="lg:clear-none clear-both float-right rounded-full px-4 shadow-sm mr-2 hidden lg:block">
-                <p className="font-semibold">{balanceArtinuFinal} ARTINU</p>
-              </div>
-            )}
-          </div>
-          <div className="text-white">
+        <header className="flex items-center justify-between">
+          <div className="text-white flex items-center">
+            <a href="https://www.artinu.club" target="_blank">
+              <img className="float-left" src={artinuLogoHeader} alt="Logo" />
+            </a>
             <NavLink exact activeClassName="active" className="mx-4" to="/">
               Portfolio
             </NavLink>
@@ -73,9 +52,29 @@ function Header(props: any) {
             >
               My portfolio
             </NavLink>
-
+          </div>
+          <div className="flex">
+            {etherUserBalance && (
+              <div className=" truncate w-48 bg-gray-800 rounded-full ml-2 px-4  shadow-sm">
+                <p>{props.account}</p>
+              </div>
+            )}
+            {etherUserBalance && (
+              <div className=" bg-gray-800 rounded-full b px-4 shadow-sm hidden lg:block">
+                <p className="font-semibold">
+                  {etherUserBalance &&
+                    parseFloat(formatEther(etherUserBalance)).toFixed(2)}{" "}
+                  ETH
+                </p>
+              </div>
+            )}
+            {etherUserBalance && (
+              <div className="lg:clear-none clear-both  rounded-full px-4 shadow-sm mr-2 hidden lg:block">
+                <p className="font-semibold">{balanceArtinuFinal} ARTINU</p>
+              </div>
+            )}
             {!account && (
-              <div className="float-right">
+              <div className="">
                 <Button
                   onClick={() => {
                     activateBrowserWallet();

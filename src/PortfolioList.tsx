@@ -10,80 +10,24 @@ let isLoading = false;
 type MyProps = {
   selectedAccount: any;
   account: any;
+  listAssets: any;
+  listCollections: any;
+  isLoaded: any;
 };
 
 const updateUser = "0xC8605C3e0E670C1419147F6B9885335aF5Ed0E33";
 
 export default class PortfolioList extends Component<MyProps> {
-  state = {
-    portfolioItems,
-    collections,
-    isLoading,
-  };
-
-  fetchUpcoming() {
-    this.setState({
-      isLoading: true,
-    });
-    fetch(
-      `https://api.opensea.io/api/v1/assets?owner=${this.props.selectedAccount}&order_direction=asc&offset=0`,
-      {
-        headers: {
-          "X-API-KEY": "66aa3ceafbc64adfafcf84384b301b06",
-        },
-      }
-    )
-      // We get the API response and receive data in JSON format...
-      .then((response) => response.json())
-      // ...then we update upcomingMovies State
-      .then((data) =>
-        this.setState({
-          portfolioItems: data.assets,
-          isLoading: false,
-        })
-      );
-    fetch(
-      `https://api.opensea.io/api/v1/collections?asset_owner=${this.props.selectedAccount}&offset=0`,
-      {
-        headers: {
-          "X-API-KEY": "66aa3ceafbc64adfafcf84384b301b06",
-        },
-      }
-    )
-      // We get the API response and receive data in JSON format...
-      .then((response) => response.json())
-      // ...then we update upcomingMovies State
-      .then((data) =>
-        this.setState({
-          collections: data,
-        })
-      );
-  }
-
-  componentDidMount() {
-    if (!this.props.selectedAccount) {
-      return;
-    }
-
-    this.fetchUpcoming();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.selectedAccount !== this.props.selectedAccount) {
-      this.fetchUpcoming();
-    }
-  }
-
   render() {
-    if (this.state.isLoading && !this.props.selectedAccount) {
+    if (!this.props.isLoaded) {
       return <Loader />;
     }
 
     return (
       <div className="grid grid-cols-1 lg:grid-cols-2  grid-rows-2 gap-4 w-full lg:w-3/5">
-        {this.state.portfolioItems &&
-          this.state.portfolioItems.map((portfolioItem, i) => {
-            const selectedCollection = this.state.collections.find(
+        {this.props.listAssets &&
+          this.props.listAssets.map((portfolioItem, i) => {
+            const selectedCollection = this.props.listCollections.find(
               (collection: any) =>
                 collection.primary_asset_contracts[0] &&
                 collection.primary_asset_contracts[0].address ===

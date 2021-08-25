@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 a.active {
-    color: #FF64AE;
-    font-weight:600;
-  }
+  color: #ff64ae;
+  font-weight: 600;
+}
 
-  body{
-    background-color:black;
-  }
+body {
+  background-color: rgba(17, 24, 39);
+}
