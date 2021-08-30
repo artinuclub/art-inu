@@ -1,73 +1,172 @@
-import artinuLogoHeader from "./images/logoHeader.svg"
-import React from "react"
-import { useEthers, useContractCall, useContractFunction,useEtherBalance } from "@usedapp/core";
-import { Interface, parseEther, formatEther } from "ethers/lib/utils";
-import contract_abi from "./contract"
-import Web3 from 'web3'
-import { FiExternalLink } from "react-icons/fi";
+import artinuLogoHeader from "./images/logoHeader.svg";
+import { useEthers, useContractCall, useEtherBalance } from "@usedapp/core";
+import { Interface, formatEther } from "ethers/lib/utils";
+import contract_abi from "./contract";
+import Web3 from "web3";
+import { NavLink } from "react-router-dom";
+import Button from "./Button";
+import menuHome from "./images/home.svg";
+import menuDashboard from "./images/trending-up.svg";
+import menuPortfolio from "./images/user.svg";
+import menuLaunchpad from "./images/codepen.svg";
 
 const TOKEN_CONTRACT = "0xc1FF84C5C6FcF7e6E60D6bf4C1209BC4254629ad";
-const ARTIST_WALLET = "0x853c64EdD278B9C30E8abf5F8cf42aeF64C3796D"
+const ARTIST_WALLET = "0x853c64EdD278B9C30E8abf5F8cf42aeF64C3796D";
 
+function Header(props: any) {
+  const { activateBrowserWallet, account, active, error } = useEthers();
+  const etherUserBalance = useEtherBalance(props.account);
+  const abi = new Interface(contract_abi);
 
-function Header (props:any){
+  const balanceOfArtinu = useContractCall({
+    abi,
+    address: TOKEN_CONTRACT,
+    method: "balanceOf",
+    args: [props.account],
+  });
 
-    const etherUserBalance = useEtherBalance(props.account);
-    const abi = new Interface(contract_abi);
+  const balanceArtinu =
+    balanceOfArtinu && Web3.utils.fromWei(balanceOfArtinu.toString(), "gwei");
+  const balanceArtinuFinal = Math.round(Number(balanceArtinu)).toLocaleString();
 
-    const balanceOfArtinu = useContractCall({
-        abi,
-        address: TOKEN_CONTRACT,
-        method: "balanceOf",
-        args: [props.account],
-      });
-    
-      const balanceArtinu = balanceOfArtinu && Web3.utils.fromWei(balanceOfArtinu.toString(), 'gwei');
-      const balanceArtinuFinal = (Math.round(Number(balanceArtinu))).toLocaleString()
-      
+  return (
+    <div className=" mx-auto px-4 pt-8 pb-8 mb-12  text-white border-b border-gray-800">
+      <div className="max-w-7xl mx-auto">
+        <header className="flex items-center justify-between">
+          <div className="text-white flex items-center hidden sm:flex">
+            <a href="https://www.artinu.club" target="_blank" className="block">
+              <img className="float-left" src={artinuLogoHeader} alt="Logo" />
+            </a>
+            <NavLink exact activeClassName="active" className="mx-4" to="/">
+              Portfolio
+            </NavLink>
+            <NavLink
+              exact
+              activeClassName="active"
+              className="mx-4"
+              to="/dashboard"
+            >
+              Dashboard
+            </NavLink>
+            <NavLink
+              exact
+              activeClassName="active"
+              className="mx-4"
+              to="/myportfolio"
+            >
+              My portfolio
+            </NavLink>
+            <NavLink
+              exact
+              activeClassName="active"
+              className="mx-4"
+              to="/launchpad"
+            >
+              Launchpad
+            </NavLink>
+          </div>
 
-      
+          {/* Menu mobile */}
+          <div className="bg-gray-900 border-t-1 border-gray-400 w-full h-92 fixed bottom-0 left-0 flex items-center block sm:hidden py-4">
+            <div className="w-1/4 text-center">
+              <img className="mx-auto" src={menuHome} alt="Logo" width="24px" />
+              <NavLink
+                exact
+                activeClassName="active"
+                className="mx-4 text-xxs"
+                to="/"
+              >
+                Portfolio
+              </NavLink>
+            </div>
+            <div className="w-1/4 text-center">
+              <img
+                className="mx-auto"
+                src={menuDashboard}
+                alt="Logo"
+                width="24px"
+              />
+              <NavLink
+                exact
+                activeClassName="active"
+                className="mx-4 text-xxs"
+                to="/dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </div>
+            <div className="w-1/4 text-center">
+              <img
+                className="mx-auto"
+                src={menuPortfolio}
+                alt="Logo"
+                width="24px"
+              />
+              <NavLink
+                exact
+                activeClassName="active"
+                className="mx-4 text-xxs"
+                to="/myportfolio"
+              >
+                My portfolio
+              </NavLink>
+            </div>
+            <div className="w-1/4 text-center">
+              <img
+                className="mx-auto"
+                src={menuLaunchpad}
+                alt="Logo"
+                width="24px"
+              />
+              <NavLink
+                exact
+                activeClassName="active"
+                className="mx-4 text-xxs"
+                to="/launchpad"
+              >
+                Launchpad
+              </NavLink>
+            </div>
+          </div>
 
-    return(
-    <div className="max-w-screen-lg mx-auto px-4 pt-12">
-    <header className="">
-        <a href="https://www.artinu.club" target="_blank"><img className="mb-8 float-left" src={artinuLogoHeader} alt="Logo" /></a>
-        <div>
-        {etherUserBalance &&
-        <div className="float-right truncate w-48 bg-white p-2 rounded-full ml-2 px-4 border border-gray-200  shadow-sm">
-            <p>{props.account}</p>
-        </div>
-        }
-        {etherUserBalance &&
-        <div className="float-right bg-white p-2 rounded-full border border-gray-200 px-4 shadow-sm">
-            <p className="font-semibold">{etherUserBalance && parseFloat(formatEther(etherUserBalance)).toFixed(2)} ETH</p>
-        </div>
-        }
-        {etherUserBalance &&
-        <div className="lg:clear-none clear-both float-right bg-white p-2 rounded-full border border-gray-200 px-4 shadow-sm mr-2">
-            <p className="font-semibold">{balanceArtinuFinal} ARTINU</p>
-        </div>
-        }   
-        </div>
-    </header>
-    <div className="lg:w-3/5 w-full mx-auto">
-        <ul className="flex flex-wrap clear-both justify-between pt-12">
-            <li className="mx-2 border-b-2 border-artinuMain">
-                <p className="font-semibold text-artinuMain ">Dashboard</p>
-            </li>
-            <a href="https://www.dextools.io/app/uniswap/pair-explorer/0xd244f5d9bd7405ecb0068e69c4b6040298c576fa" target="_blank" className="inline-flex"><li className="mx-2">
-                Open chart 
-            </li><FiExternalLink className="mt-1"/></a>
-            <a href="https://t.me/artinu_club" target="_blank" className="inline-flex"><li className="mx-2">
-                Telegram
-            </li><FiExternalLink className="mt-1"/></a>
-            <a href="https://uploads-ssl.webflow.com/60c5bf93e74f6b85411cf86c/6102b9d45dca76424ca0fe68_TECHAUDIT_ART_INU.pdf" target="_blank" className="inline-flex"><li className="mx-2">
-                Audit
-            </li><FiExternalLink className="mt-1"/></a>
-        </ul>
+          <div className="flex">
+            {etherUserBalance && (
+              <div className=" bg-gray-800 rounded-full b px-4 shadow-sm py-2 hidden">
+                <p className="font-semibold">
+                  {etherUserBalance &&
+                    parseFloat(formatEther(etherUserBalance)).toFixed(2)}{" "}
+                  ETH
+                </p>
+              </div>
+            )}
+            {etherUserBalance && (
+              <div className="lg:clear-none clear-both  rounded-full px-4 py-2 shadow-sm mr-2 block">
+                <p className="font-semibold text-xs lg:text-base">
+                  {balanceArtinuFinal} ARTINU
+                </p>
+              </div>
+            )}
+            {!account && (
+              <div className="">
+                <Button
+                  onClick={() => {
+                    activateBrowserWallet();
+                  }}
+                >
+                  Unlock wallet
+                </Button>
+              </div>
+            )}
+            {etherUserBalance && (
+              <div className=" truncate w-48 bg-gray-800 rounded-full ml-2 px-4 py-2 shadow-sm text-xs lg:text-base">
+                <p>{props.account}</p>
+              </div>
+            )}
+          </div>
+        </header>
+      </div>
     </div>
-    </div>
-    )
+  );
 }
 
-export default Header
+export default Header;

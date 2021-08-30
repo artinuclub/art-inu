@@ -37,8 +37,8 @@ const Card: React.FC<Props> = ({
     <>
       <div className="">
       <img className="mb-8 mx-auto" src={artinuLogo} alt="Logo" />
-        <h2 className="text-xl font-semibold">You're an NFT artist and want to earn money?</h2>
-        <p className="text-gray-500 mt-2">Submit your profile and start earning rewards</p>
+        <h2 className="text-xl text-white font-semibold">You're an NFT artist and want to earn money?</h2>
+        <p className="text-gray-400 mt-2">Submit your profile and start earning rewards</p>
         <div className="mt-8">
         <span className="opacity-20"><Button>
             Submit my profile (SOON)

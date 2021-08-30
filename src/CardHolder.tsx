@@ -44,7 +44,7 @@ const CardHolder: React.FC<Props> = ({
       <div className="">
         <span className="text-3xl">💰</span>
         <h1 className="text-base mb-2 font-semibold text-gray-500 mt-2">You own</h1>
-        <h2 className="text-3xl">{(balanceArtinuFinal && balanceArtinuFinal).toLocaleString()} ARTINU</h2>
+        <h2 className="text-3xl text-white">{(balanceArtinuFinal && balanceArtinuFinal).toLocaleString()} ARTINU</h2>
         <p className="text-gray-500">That's <span className="font-semibold">{artinuPercent.toFixed(2)}%</span> of the supply, that's worth <span className="font-semibold">${Math.round(artinuPriceInEth * balanceArtinuFinal).toLocaleString()}</span></p>
         
         <div className="mt-4">
