@@ -63,19 +63,19 @@ const Card: React.FC<Props> = ({
       </div> */}
         <div className="flex flex-wrap justify-between lg:mx-8 mx-2">
           <div className="lg:mb-0">
-            <h1 className="text-xl text-white font-semibold">
+            <h1 className="text-3xl text-white font-medium">
               ${artinuPriceInEth}
             </h1>
             <p className="text-gray-400">Current price</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl text-white font-semibold">
+            <h1 className="text-3xl text-white font-medium">
               {circulatingSupply.toLocaleString()}
             </h1>
             <p className="text-gray-500">Circulating supply</p>
           </div>
           <div className="lg:mb-0 mb-2">
-            <h1 className="text-xl text-white font-semibold">
+            <h1 className="text-3xl text-white font-medium">
               ${(circulatingSupply * artinuPriceInEth).toLocaleString()}
             </h1>
             <p className="text-gray-500">Current mcap</p>

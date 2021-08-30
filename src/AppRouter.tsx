@@ -3,6 +3,7 @@ import { useEthers } from "@usedapp/core";
 import Header from "./Header";
 import App from "./App";
 import Portfolio from "./Portfolio";
+import Launchpad from "./Launchpad";
 
 export default function AppRouter() {
   const { account } = useEthers();
@@ -31,6 +32,7 @@ export default function AppRouter() {
             )}
             path="/myportfolio"
           />
+          <Route component={Launchpad} path="/launchpad" />
         </Switch>
       </BrowserRouter>
     </div>

@@ -2,6 +2,7 @@ import { Component } from "react";
 import Button from "./Button";
 import Loader from "./Loader";
 import Web3 from "web3";
+import logo from "./logo.svg";
 
 let collections: Array<any> = [];
 let portfolioItems: Array<any> = [];
@@ -36,10 +37,10 @@ export default class PortfolioList extends Component<MyProps> {
 
             return (
               <div key={i}>
-                <div className="bg-gray-800 p-8 rounded-lg shadow-xl py-8 text-white">
+                <div className="bg-gray-800 p-8 rounded-lg shadow-xl py-8 text-white border border-white border-opacity-5 shadow-xl">
                   <img
                     className="w-full rounded-xl mb-4"
-                    src={portfolioItem.image_preview_url}
+                    src={portfolioItem.image_preview_url || logo}
                     alt="Logo"
                   />
                   <div className="flex">
@@ -67,7 +68,7 @@ export default class PortfolioList extends Component<MyProps> {
                     <div className="text-center px-4">
                       <p className="text-xl">
                         {selectedCollection &&
-                          selectedCollection.stats.floor_price}{" "}
+                          selectedCollection.stats.floor_price.toFixed(2)}{" "}
                         Ξ
                       </p>
                       <p className="text-gray-500">Current floor</p>

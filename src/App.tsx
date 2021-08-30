@@ -138,17 +138,17 @@ function App() {
           </div>
 
           {account && (
-            <div className="flex flex-wrap">
-              <div className="lg:w-6/12 w-full">
-                <div className="bg-gray-800 h-72 p-8 mt-4 lg:mr-2 m-0 rounded-lg  shadow-xl py-12 ">
+            <div className="flex flex-wrap ">
+              {/* <div className="lg:w-6/12 w-full">
+                <div className="bg-gray-800 h-72 p-8 mt-4 lg:mr-2 m-0 rounded-lg order border-white border-opacity-5 shadow-xl py-12 ">
                   <CardArtist
                     balanceOf={balanceOf}
                     artinuPriceInEth={artinuPriceInEth}
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="lg:w-6/12 w-full">
-                <div className="bg-gray-800 h-72 p-8 mt-4 lg:ml-2 m-0 rounded-lg shadow-xl py-12 ">
+                <div className="bg-gray-800 h-96 p-8 mt-4 lg:ml-2 m-0 rounded-lg border border-white border-opacity-5 shadow-xl py-12 ">
                   <CardHolder
                     balanceOf={balanceOf}
                     artinuPriceInEth={artinuPriceInEth}
@@ -156,13 +156,13 @@ function App() {
                   />
                 </div>
               </div>
-              <div className="lg:w-6/12 w-full">
-                <div className="bg-gray-800 h-96 p-8 mt-4 lg:mr-2 m-0 rounded-lg shadow-xl py-12 ">
+              {/* <div className="lg:w-6/12 w-full">
+                <div className="bg-gray-800 h-96 p-8 mt-4 lg:mr-2 m-0 rounded-lg border border-white border-opacity-5 shadow-xl py-12 ">
                   <CardJoinArtist balanceOf={balanceOf} />
                 </div>
-              </div>
+              </div> */}
               <div className="lg:w-6/12 w-full">
-                <div className="bg-gray-800 h-96 p-8 mt-4 lg:ml-2 m-0 rounded-lg shadow-xl py-12 relative">
+                <div className="bg-gray-800 h-96 p-8 mt-4 lg:ml-2 m-0 rounded-lg shadow-xl  border border-white border-opacity-5 py-12 relative">
                   <CardDAO balanceOf={balanceOf} />
                 </div>
               </div>
